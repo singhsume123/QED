@@ -12,6 +12,7 @@ skip_before_filter :verify_authenticity_token
   # GET /tables/1.json
   def show
     @table = @restaurant.tables.find(params[:id])
+    render json: @table, status: 200
   end
 
   # GET /tables/new
