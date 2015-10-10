@@ -1,0 +1,15 @@
+{
+  "name": "My Extension",
+  "manifest_version": 2,
+  "version": "2.1",
+  "description": "Live restaurent wait time and table status on Yelp.",
+  "icons": { "128": "icon.png" },
+  "permissions": ["*://*.yelp.com/search*", "*://*.yelp.com/biz*"],
+  "content_scripts": [
+    {
+      "matches": ["*://*.yelp.com/search*", "*://*.yelp.com/biz*"],
+      "css": ["mystyles.css", "bootstrap.css"],
+      "js": ["jquery.js", "myscript.js"]
+    }
+  ]
+}
