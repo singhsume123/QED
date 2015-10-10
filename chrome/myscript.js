@@ -59,9 +59,9 @@ $("li.regular-search-result").each(function(index) {
 				var col = Number(table.y - 1);
 				var table_class = "btn btn-block btn-";
 				if (table.status == "true") {
-					table_class += "success";
-				} else {
 					table_class += "warning";
+				} else {
+					table_class += "success";
 				}
 				var cap = table.capacity;
 				var selector = 'table.infoTable tr:eq(' + row + ') td:eq(' + col + ')';
