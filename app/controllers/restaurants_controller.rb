@@ -10,7 +10,7 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.where(:yelp_id => params[:id].to_s).first
-    @my_restaurant_hash = {:restuarant => {:avgwaittime => @restaurant.avgwaittime, :tables => @restaurant.tables}}
+    @my_restaurant_hash = {:restaurant => {:avgwaittime => @restaurant.avgwaittime, :tables => @restaurant.tables}}
     render json:@my_restaurant_hash
   end
 
