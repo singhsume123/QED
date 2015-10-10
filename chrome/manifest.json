@@ -9,7 +9,7 @@
     {
       "matches": ["*://*.yelp.com/search*", "*://*.yelp.com/biz*"],
       "css": ["mystyles.css", "bootstrap.css"],
-      "js": ["jquery.js", "myscript.js"]
+      "js": ["jquery.js", "firebase.js", "myscript.js"]
     }
   ]
 }
