@@ -13,6 +13,7 @@ class RestaurantsController < ApplicationController
     if @restaurant
       @maxX = "0"
       @maxY = "0"
+      @emptycount = 0
       @tables = @restaurant.tables
       @tables.each do |table|
         if(table.x > @maxX)
@@ -21,8 +22,12 @@ class RestaurantsController < ApplicationController
         if(table.y > @maxY)
           @maxY = table.y
         end
+        if table.status == "false"
+          @emptycount+=1
+        end
       end
-      @my_restaurant_hash = {:restaurant => {:error => "0", :avgwaittime => @restaurant.avgwaittime, :tables => @restaurant.tables,:maxX => @maxX, :maxY => @maxY}
+
+      @my_restaurant_hash = {:restaurant => {:error => "0", :avgwaittime => @restaurant.avgwaittime, :tables => @restaurant.tables,:maxX => @maxX, :maxY => @maxY, :empty_tables => @emptycount.to_s}
       }
       render json:@my_restaurant_hash
     else
