@@ -10,8 +10,30 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.where(:yelp_id => params[:id].to_s).first
-    @my_restaurant_hash = {:restaurant => {:avgwaittime => @restaurant.avgwaittime, :tables => @restaurant.tables}}
-    render json:@my_restaurant_hash
+    if @restaurant
+      @maxX = "0"
+      @maxY = "0"
+      @emptycount = 0
+      @tables = @restaurant.tables
+      @tables.each do |table|
+        if(table.x > @maxX)
+          @maxX = table.x
+        end
+        if(table.y > @maxY)
+          @maxY = table.y
+        end
+        if table.status == "false"
+          @emptycount+=1
+        end
+      end
+
+      @my_restaurant_hash = {:restaurant => {:error => "0", :avgwaittime => @restaurant.avgwaittime, :tables => @restaurant.tables,:maxX => @maxX, :maxY => @maxY, :empty_tables => @emptycount.to_s}
+      }
+      render json:@my_restaurant_hash
+    else
+      render json:{:restaurant => {:error => "1"}}
+    end
+
   end
 
   def new
