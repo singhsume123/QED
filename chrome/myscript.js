@@ -18,7 +18,7 @@ $("li.regular-search-result").each(function(index) {
 		cur_sel.append("<p>Wait Time = " + data.restaurant.avgwaittime + "</p>");
 		cur_sel.append("<table>");
 		$.each(data.restaurant.tables, function(index, table) {
-			cur_sel.append("<tr><td>Table " +index+ "</td><td>" + table.capacity +"</td></tr>")
+			cur_sel.append("<tr><td>Table " + (index+1) + "</td><td>" + table.capacity +"</td></tr>")
 		});
 		cur_sel.append("</table>");
 	});
